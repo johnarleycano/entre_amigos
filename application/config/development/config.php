@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost:88/proyectos/entre_amigos/';
+$config['base_url']	= 'http://localhost/proyectos/entre_amigos/';
 
 /*
 |--------------------------------------------------------------------------
