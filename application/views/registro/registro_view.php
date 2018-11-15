@@ -135,14 +135,21 @@
                     <h3><center>Afiliados empresariales</center></h3>
 
                     <ul>
-                        <li>Tendrá derecho a la biblioteca  (No 1) digitada en papel.</li>
-                        <li>Al entregarle el código de empleo, el cual se lo enviaremos a su correo personal, colóquelo en el espacio vacío del chequera  luego diríjase a la dirección asignada reclame su primer libro (cuento).</li>
+                        <li>Tendrá derecho a la biblioteca, con libros impresos, pudiendo llevar los cuentos para adultos a casa mes, a mes, por un año.</li>
+                        <li>Al tener su primer cuento, podrá dirigirse al punto de atención, para que obtenga la chequera de Don Rico y así pueda comprar desde el primer día de cada mes su cuento por un año sin tener que poner ni un solo peso para comprar libros ni sorteos, y no tendrás que usar la moneda tradicional.</li>
+                        <li>Usted mismo se afiliará, colocando sus datos personales y llenado las casillas asignadas.</li>
+                        <li>El programa le dará el código de empleo y se lo enviará a su correo con su clave secreta para que no los pierda, así pueda entrar a su panel interno y disfrute de la biblioteca virtual y los datos de sus referidos.</li>
+                        <li>Recuerde colocar en la chequera el código de afiliación y el código de Empleo son su identidad, para reclamar los libros y participar en los sorteos</li>
+                        <li>Con su código de empleo podrá invitar a un amigo, o a los que usted desee, a mayor invitado, más oportunidades de ganar.</li>
+
+
+                        <!-- <li>Al entregarle el código de empleo, el cual se lo enviaremos a su correo personal, colóquelo en el espacio vacío del chequera  luego diríjase a la dirección asignada reclame su primer libro (cuento).</li>
                         <li>También la chequera de don Rico para que compre mes a mes, sus bellas historias y haga parte de nuestro Club Entreamigos Lec.</li>
                         <li>Condición: Cuando done el cuento leído a la fundación, se le activara el cheque, para que compre su cuento siguiente, y asi por todo el año.</li>
                         <li>Recuerde, siempre tenga a la mano el código de afiliación y su clave, en caso de olvidarlos, se lo enviamos al correo con el cual será registrado.</li>
                         <li>Tendrá un panel interno con su biblioteca, código de empleo para invitar a un amigo y correo interno.</li>
                         <li>Los sorteos de Afiliados empresariales funcionan así. Al salir ganadora la célula del  afiliado se invitaran otros dos participantes, abran tres balotas una para cada uno.</li>
-                        <li>El ganador tendrá el premio mayor, los otros dos se repartirán así. El segundo ganador, ganara 3ooo,ooo tres millones de pesos y el otro ganara 2000.000 pesos colombianos.</li>
+                        <li>El ganador tendrá el premio mayor, los otros dos se repartirán así. El segundo ganador, ganara 3ooo,ooo tres millones de pesos y el otro ganara 2000.000 pesos colombianos.</li> -->
                     </ul>
                 </div>
 
@@ -259,17 +266,16 @@
         <div id="menu4" class="tab-pane fade">
             <p>
                 <div class="well row">
-                    <div class="col-lg-6">
+                    <!-- <div class="col-lg-6">
                         <label for="fecha_prestamo" class="control-label">Fecha de préstamo:</label>
                         <input type="date" id="fecha_prestamo" class="form-control" name="fecha_prestamo">
                     </div>
                 
                     <div class="col-lg-6">
                         <label for="es_prestamo" class="control-label"></label><br>
-                        <!-- <input type="date" id="fecha_prestamo" class="form-control" name="fecha_prestamo"> -->
                         <input type="checkbox" id="es_prestamo"> Marcar sólo si hizo el préstamo
                     </div>
-                    <div class="clear"></div>
+                    <div class="clear"></div> -->
 
                     <div class="col-lg-3">
                         <label for="patrocinio5" class="control-label">Número patrocinio *</label>
