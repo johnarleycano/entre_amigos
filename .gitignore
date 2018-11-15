@@ -1,0 +1,15 @@
+_private/
+_vti_bin/
+_vti_cnf/
+_vti_log/
+_vti_pvt/
+_vti_txt/
+
+
+.htaccess
+.gitattributes
+_vti_inf.html
+postinfo.html
+info.php
+license.txt
+index.php
