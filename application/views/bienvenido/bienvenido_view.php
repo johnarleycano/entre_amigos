@@ -253,9 +253,9 @@
 			            <div class="modal-body">
 			            	<div class="row">
 			            		<div class="form-group col-lg-12">
-			            			<p>Hemos querido no ser muy gravosos con la propuesta de la afiliación. Le proponemos que, tan solo con $50.000 pesos moneda colombiana o 25 dólares una sola vez en la vida, sería suficiente para que la fundación pudiera ayudarse, y así cumplir con nuestros objetivos.</p>
+			            			<p>Hemos querido no ser muy gravosos con la propuesta de la afiliación. Le proponemos que, tan solo con $89.000 pesos moneda colombiana o 25 dólares una sola vez en la vida, sería suficiente para que la fundación pudiera ayudarse, y así cumplir con nuestros objetivos.</p>
 			            			<p>En esta área los cuentos son puestos en su panel interno, de una manera virtual.</p>
-			            			<p>Sí, la Biblioteca privada, es de contacto personal, será con invitación, con patrocinio empresarial y tendrá un costo de $84.000 pesos colombianos.</p>
+			            			<p>Sí, la Biblioteca privada, es de contacto personal, será con invitación, con patrocinio empresarial y tendrá un costo de $89.000 pesos colombianos.</p>
 			            			<p>Esta afiliación, será una sola vez en la vida, tendrán libros físicos, impresos, que podrán llevar a casa mes a mes por un año, tendrán la chequera de Don Rico, sin ningún costo adicional, para que compre lo que no se puede comprar con la moneda tradicional.</p>
 			            			<p>
 			            				Podrá afiliarse de la siguiente manera:
@@ -333,7 +333,7 @@
 			            		<div class="form-group col-lg-12">
 			            			<p>Hay tres formas de consignar en la fundación.</p>
 			            			<ol>
-			            				<li>Al recibir un volante de invitación de una manera directa, diríjase al lugar que le indique el volante, haga su afiliación allí y luego acérquese al punto de atención, en esta área solo deberá consignar $84.000, una sola vez en la vida.</li>
+			            				<li>Al recibir un volante de invitación de una manera directa, diríjase al lugar que le indique el volante, haga su afiliación allí y luego acérquese al punto de atención, en esta área solo deberá consignar $89.000, una sola vez en la vida.</li>
 			            				<li>Si no puede tener contacto personal, envié su aporte por el área de consignación, a la cooperativa en la cuenta que le asignaremos.</li>
 			            				<li>3) Si su empresa, o una persona natural, desea hacer un aporte, de una manera diferente, claro que puede hacerlo.</li>
 			            			</ol>
@@ -433,7 +433,7 @@
 				            		<ul>
 				            			<li>
 				            				<p><b>Litero:</b> es un personaje de la Fundación, que de varias maneras acercará a las personas con un volante de invitación, llamado patrocinio empresarial; éstos invitados se acercarán personalmente al punto de atención y harán su primer contacto personal con la Fundación. Si cumple con lo requerido en el volante, le entregarán su primer cuento físico (Impreso); y además le entregarán una chequera con 12 cheques (moneda oficial de Don Rico), para que compre mes a mes lo que no se puede comprar con la moneda tradicional.</p>
-				            				<p>El afiliado en ésta área hará un aporte de $84.000 pesos una sola vez en la vida y se tomará como una donación a la Fundación, para apoyar la campaña.</p>
+				            				<p>El afiliado en ésta área hará un aporte de $89.000 pesos una sola vez en la vida y se tomará como una donación a la Fundación, para apoyar la campaña.</p>
 				            				<p>La fundación hará un convenio en algún almacén o supermercado, cercano y de fácil acceso a usted, donde usted pueda acercarse mes a mes y comprar con la chequera de Don Rico.</p>
 				            				<p>Todas las personas que tenga la chequera de Don Rico, tendrán libros físicos y virtual.</p>
 				            				<p>Los sorteos son sin ningún costo, hasta que la fundación exista.</p>
@@ -549,8 +549,8 @@
 			            	<div class="row">
 			            		<div class="form-group col-lg-12">
 			            			<p>Todo lo que tiene que ver con préstamos, está referido con la sección patrocinados; estos préstamos están incluidos dentro de la propuesta que lleva el volante de invitación.</p>
-			          				<p>El que use el préstamo como medio de aceptación, deberá aportar inicialmente $24.000 pesos y tomará el préstamo de $60.000 el cual pagará con el sistema ATH CULTURAL que son $1.000 pesos diarios ahorrados en casa durante 60 días.</p>
-			          				<p>Esto quiere decir, que el costo de afiliación es de $84.000 mil pesos colombianos una sola vez en la vida y se toman como una donación.</p>
+			          				<p>El que use el préstamo como medio de aceptación, deberá aportar inicialmente $29.000 pesos y tomará el préstamo de $60.000 el cual pagará con el sistema ATH CULTURAL que son $1.000 pesos diarios ahorrados en casa durante 60 días.</p>
+			          				<p>Esto quiere decir, que el costo de afiliación es de $89.000 pesos colombianos una sola vez en la vida y se toman como una donación.</p>
 			          				<p>La forma de aportar es la siguiente:</p>
 			          					<ul>
 			          						<li>Entre a <b><i><a href="http://entreamigosdecolombia.org/index.php" target="_blank">http://entreamigosdecolombia.org</a></i></b> busque el botón de donación, y seleccione el aporte de $24.000 pesos, el programa le dará el código de pago.  </li>
@@ -573,14 +573,14 @@
 	</div>
 	<div class="clear"></div>
 
-	<div class="col-lg-3">
+	<!-- <div class="col-lg-3">
 		<div class="well">
 			<h3>System Three</h3>
 			<a onClick="javascript:system_three()" class="btn btn-primary btn-lg">Ver más &raquo;</a>
-
-			<!-- Modal System three -->
+	
+			Modal System three
 			<div id="modal_system_three" class="modal fade" >
-			    <!-- modal-contejnt -->
+			    modal-contejnt
 			    <div class="modal-dialog">
 			        <div class="modal-content">
 			            <div class="modal-header">
@@ -594,7 +594,7 @@
 			            			<p><b>SYSTEMTHREE, ES UN PROGRAMA DE TRES CONTACTOS.</b></p>
 			            				<li>EJ: Cuando un titular invita a dos amigos al programa ya es un systemthree.</li>
 			            				<li>Esta persona tendrá un sorteo adicional  a los sorteos diarios que tiene todo afiliado.</li>
-			            				<li>También puede participar en el programa, la persona que entre como afiliado, sin usar el préstamo, pagando el 100% del aporte total o sea 84.000 una sola vez en la vida para la fundación es muy importante su ayuda, además, es conveniente que no se quede por fuera de este sorteo.</li>
+			            				<li>También puede participar en el programa, la persona que entre como afiliado, sin usar el préstamo, pagando el 100% del aporte total o sea 89.000 una sola vez en la vida para la fundación es muy importante su ayuda, además, es conveniente que no se quede por fuera de este sorteo.</li>
 			            				<li>El sorteo será de 70.000.000 setenta millones de pesos diarios, hasta que la fundación exista.</li>
 			            				<li>El asesor voluntario ganara $5'000.000 cinco millones de pesos, por haber invitado al afiliado.</li>
 			            				<li> El sorteo se hará así:<ul></ul>
@@ -603,15 +603,15 @@
 				            	</div>
 			            	</div>
 			            </div>
-
+	
 			            <div class="modal-footer">
 			                <button type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
 			            </div>
-			        </div><!-- /.modal-content -->
-			    </div><!-- /.modal-dialog -->
-			</div><!-- /.modal -->
+			        </div>/.modal-content
+			    </div>/.modal-dialog
+			</div>/.modal
 		</div>
-	</div>
+	</div> -->
 </p>
 
 <script type="text/javascript">
