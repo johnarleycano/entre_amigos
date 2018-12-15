@@ -11,13 +11,13 @@
 	<a class="navbar-brand" href="<?php echo site_url(); ?>"><span class="glyphicon glyphicon-home"></span></a>
 </div>
 
-<div class="navbar-collapse collapse" style="margin: 15px; font-size: 1.2em; font-color:white;">
+<div class="navbar-collapse collapse" style="margin-top: 15px; font-size: 1em; font-color:white;">
 	<!-- Opciones del menú -->
 	<ul class="nav navbar-nav">
 		<?php if($this->session->userdata('Tipo') == '1'){ ?>
 			<!-- Administración -->
 	        <li class="dropdown">
-	            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administración <b class="caret"></b></a>
+	            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
 	            <ul class="dropdown-menu">
 	                <li>
 	                    <a href="<?php echo site_url('administracion/visitas_biblioteca'); ?>"><span class="glyphicon glyphicon-book"></span> Accesos a la biblioteca</a>
@@ -69,9 +69,9 @@
 		<!-- Si se ha logueado -->
 		<?php if($id_usuario){ ?>
 			<!-- Mis invitaciones -->
-			<li><a href="<?php echo site_url('usuario/invitador'); ?>"><span class="glyphicon glyphicon-user"></span> Mi invitador</a></li>
+			<li><a href="<?php echo site_url('usuario/invitador'); ?>"><span class="glyphicon glyphicon-user"></span> Invitador</a></li>
 			
-			<li><a href="<?php echo site_url('usuario/patrocinador'); ?>"><span class="glyphicon glyphicon-briefcase"></span> Mi patrocinador</a></li>
+			<li><a href="<?php echo site_url('usuario/patrocinador'); ?>"><span class="glyphicon glyphicon-briefcase"></span> Patrocinador</a></li>
 
 			<!-- Si no tiene código de empleo, menú para pedir cheque -->
 			<?php if($this->session->userdata('Codigo_Empleo') == 'Pendiente'){ ?>
@@ -79,13 +79,13 @@
 				<li><a href="<?php echo site_url('cheque'); ?>"><span class="glyphicon glyphicon-cloud-upload"></span> Afiliarse al club</a></li>
 			<?php }else{ ?>
 				<!-- Mis referidos -->
-				<li><a href="<?php echo site_url('usuario/referidos'); ?>"><span class="glyphicon glyphicon-user"></span> Mis referidos</a></li>
+				<li><a href="<?php echo site_url('usuario/referidos'); ?>"><span class="glyphicon glyphicon-user"></span> Referidos</a></li>
 
 				<!-- Mostrar código de empleo -->
-				<li><a href="<?php echo site_url('registro/codigo_empleo'); ?>"><span class="glyphicon glyphicon-cloud-upload"></span> Mi Código de Empleo</a></li>
+				<li><a href="<?php echo site_url('registro/codigo_empleo'); ?>"><span class="glyphicon glyphicon-cloud-upload"></span> Mi Código Empleo</a></li>
 				
 				<!-- Contáctenos -->
-				<li><a href="<?php echo site_url('bienvenido/denuncia'); ?>"><span class="glyphicon glyphicon-book"></span> Contáctenos</a></li>
+				<li><a href="<?php echo site_url('bienvenido/denuncia'); ?>"><span class="glyphicon glyphicon-book"></span> Contacto</a></li>
 			<?php } ?>
 		<?php } ?>
 
@@ -95,7 +95,7 @@
 		<!-- Si se ha logueado -->
 		<?php if($id_usuario){ ?>
 			<!-- Cerrar Sesión -->
-			<li><a href="<?php echo site_url('usuario/finalizar') ?>"><span class="glyphicon glyphicon-remove"></span> Cerrar<?php //echo substr($this->session->userdata('Nombre'), 0, 15); ?></a></li>
+			<li><a href="<?php echo site_url('usuario/finalizar') ?>"><span class="glyphicon glyphicon-remove"></span> Salir<?php //echo substr($this->session->userdata('Nombre'), 0, 15); ?></a></li>
 		<?php } ?>
 	</ul><!-- Opciones del menú -->
 	
