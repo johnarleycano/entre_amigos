@@ -6,9 +6,9 @@
 <table id="tbl_referidos">
     <thead>
         <th>Nro.</th>
-        <th>Invitador sorteos</th>
+        <th>Invitador</th>
         <th>Código de empleo</th>
-        <th>Referido</th>
+        <th>Invitado</th>
         <th>Código de empleo</th>
         <th>Fecha de registro</th>
         <!-- <th>Participa</th> -->
