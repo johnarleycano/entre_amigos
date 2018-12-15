@@ -12,7 +12,7 @@
          </div>
       </div>
 
-      <div style="margin-top: 60px;">
+      <div style="margin-top: 30px;">
          <?php $this->load->view($cabecera); ?>
       </div>
 

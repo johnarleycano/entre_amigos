@@ -24,6 +24,10 @@
 	                </li>
 
 	                <li>
+	                    <a href="<?php echo site_url('administracion/asesores_voluntarios'); ?>"><span class="glyphicon glyphicon-lock"></span> Asesores voluntarios</a>
+	                </li>
+
+	                <li>
 	                    <a href="<?php echo site_url('email/masivo'); ?>"><span class="glyphicon glyphicon-inbox"></span> Correos masivos</a>
 	                </li>
 

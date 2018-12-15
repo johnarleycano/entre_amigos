@@ -112,11 +112,15 @@ Class Administracion_model extends CI_Model{
         } //if
     }//Fin guardar_cuadro
 
-	function guardar_compra($datos){
-		if ($this->db->insert('compras', $datos)) {
+    function guardar_compra($datos){
+        if ($this->db->insert('compras', $datos)) {
              return true;
         } //if
-	}//Fin guardar_compra
+    }//Fin guardar_compra
+
+	function guardar_asesor_voluntario($datos){
+		return $this->db->insert('asesores_voluntarios', $datos);
+	}
 
     function listar_bonos(){
         $sql =
@@ -194,6 +198,10 @@ Class Administracion_model extends CI_Model{
         
         return $this->db->query($sql)->result();
     }//listar_referidos_sorteo
+
+    function obtener_asesores_voluntarios(){
+        return $this->db->get('asesores_voluntarios')->result();
+    }
 
     function quitar_invitador($id_usuario){
         $this->db->where('Fk_Id_Usuario_Invitador', $id_usuario);

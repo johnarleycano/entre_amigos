@@ -40,6 +40,21 @@ Class Administracion extends CI_Controller{
     }//Fin index()
 
     /**
+     * Asesores voluntarios
+     * 15 de diciembre de 2018
+     */
+    function asesores_voluntarios(){
+        //se establece el titulo de la pagina
+        $this->data['titulo'] = 'Asesores voluntarios';
+        //Se establece la vista que tiene el contenido principal
+        $this->data['contenido_principal'] = 'administracion/asesores_voluntarios/index_view';
+        //Se establece la vista que tiene la cabecera
+        $this->data['cabecera'] = 'administracion/asesores_voluntarios/cabecera_view';
+        //Se carga la plantilla con las demas variables
+        $this->load->view('plantillas/template', $this->data);
+    }//Fin asesores_voluntarios()
+
+    /**
      * Contador de visitas a la biblioteca
      */
     function visitas_biblioteca(){
@@ -159,6 +174,10 @@ Class Administracion extends CI_Controller{
         }
     }// guardar_cuadro
 
+    function guardar_asesor_voluntario(){
+        echo $this->administracion_model->guardar_asesor_voluntario($this->input->post('datos'));
+    }
+
     /**
      * guardar_compra
      */
@@ -184,6 +203,10 @@ Class Administracion extends CI_Controller{
         //Se carga la vista
         $this->load->view('administracion/cuadros_lista_view');
     } // listar_cuadros
+
+    function listar_asesores_voluntarios(){
+        $this->load->view('administracion/asesores_voluntarios/lista');
+    }
 
     /**
      * subir_foto
