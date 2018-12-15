@@ -88,6 +88,8 @@
                 </div>
             </p>
 
+            <button type="button" onClick="javascript:guardar()" class="btn btn-success btn-block">Guardar registro</button><br>
+
             <p>
                 <div class="form-group col-lg-6">
                     <h3><center>Donante sin referido</center></h3>
@@ -129,6 +131,8 @@
                     </div>
                 </div>
             </p>
+
+            <button type="button" onClick="javascript:guardar()" class="btn btn-success btn-block">Guardar registro</button><br>
 
             <p>
                 <div class="form-group col-lg-6">
@@ -187,6 +191,8 @@
                     </div>
                 </div>
             </p>
+
+            <button type="button" onClick="javascript:guardar()" class="btn btn-success btn-block">Guardar registro</button><br>
 
             <p>
                 <div class="form-group col-lg-6">
@@ -321,7 +327,9 @@
                     <div class="clear"></div>
                 </div>
             </p>
-
+            
+            <button type="button" onClick="javascript:guardar()" class="btn btn-success btn-block">Guardar registro</button><br>
+            
             <p>
                 <div class="form-group col-lg-6">
                     <h3><center>Patrocinador</center></h3>
@@ -394,8 +402,6 @@
             </p>
         </div>
     </div>
-
-    <button type="button" id="guardar_registro" class="btn btn-success btn-block">Guardar registro</button><br>
 </div>
 
 <script type="text/javascript">
@@ -438,6 +444,305 @@
         //     // mostrar_exito($("#mensajes"), "Le ha generado el código de empleo " + codigo_empleo + " correctamente. Se le ha enviado un correo electrónico notificándole.");
         // } // if codigo de empleo
     } // autorizar
+
+    function guardar()
+    {
+        //Declaración de variables
+        var nombre = $("#input_nombre");    
+        var cedula = $("#input_cedula");
+        var email = $("#input_email");
+        var password1 = $("#input_password1");
+        var password2 = $("#input_password2");
+        var telefono = $("#input_telefono");
+        var direccion = $("#input_direccion");
+        var id_municipio = $("#municipio");
+        var consignacion1 = $("#consignacion1");
+        var empresa1 = $("#empresa1");
+        var empresa2 = $("#empresa2");
+        var codigo_empresa2 = $("#codigo_empresa2");
+        var ce_invitador3 = $("#ce_invitador3");
+        var consignacion3 = $("#consignacion3");
+        var empresa3 = $("#empresa3");
+        var cheque4 = $("#cheque4");
+        var nombre_invitador4 = $("#input_nombre4");
+        var cedula_invitador4 = $("#cedula_invitador4");
+        var telefono_invitador4 = $("#telefono_invitador4");
+        var ce_invitador5 = $("#ce_invitador5");
+
+        var patrocinio5 = $("#patrocinio5");
+        var cupo5 = $("#cupo5");
+        var biblioteca5 = $("#biblioteca5");
+        var afiliado5 = $("#afiliado5");
+        var consignacion5 = $("#consignacion5");
+        var empresa5 = $("#empresa5");
+        var asesor5 = $("#asesor5");
+        var cedula5 = $("#cedula5");
+        var telefono5 = $("#telefono5");
+        var celular5 = $("#celular5");
+
+        var cheque6 = $("#cheque6");
+        var nombre6 = $("#input_nombre6");    
+        var ce_invitador6 = $("#ce_invitador6");
+        var telefono_invitador6 = $("#telefono_invitador6");
+        var cedula_invitador6 = $("#cedula_invitador6");
+        // var tipo_regalo5 = $("#tipo_regalo5");
+        var fecha_consignacion = $("#fecha_consignacion");
+        var id_invitador;
+        var invitador;
+
+        // Datos del cheque
+        var tipo_cheque = $('input:radio[name=metodo_afiliacion]:checked');
+        var codigo_cheque = $("#input_codigo_cheque");
+        var clave_cheque = $("#input_clave_cheque");
+
+        //Campos obligatorios a validar
+        var campos_vacios = new Array(
+            nombre.val(), 
+            cedula.val(), 
+            email.val(),
+            password1.val(),
+            password2.val(),
+            telefono.val(),
+            id_municipio.val()
+        );
+        // console.log(campos_vacios);
+        
+        // si no supera la validación
+        if (!validar_campos_vacios(campos_vacios)) {
+            //Se muestra el error
+            mostrar_error($("#mensajes"), "Por favor diligencie todos los campos marcados con *");
+
+            return false;
+        }
+        
+        // Si no coincide los cheques
+        if (!validar_claves(password1, password2)) {
+            //Se muestra el error
+            mostrar_error($("#mensajes"), "Las contraseñas no coinciden. Por favor verifique.");
+
+            return false;
+        }
+
+        validar_cedula = ajax("<?php echo site_url('registro/validar_cedula'); ?>", {'cedula': cedula.val()}, 'html');
+
+        // Si ya existe la cédula
+        if (validar_cedula) {
+            //Se muestra el error
+            alert("El número de cédula ya se encuentra registrado. Verifique y vuelva a intentarlo");
+
+            return false;
+        }
+
+        //Obtenemos un código de afiliación
+        codigo_afiliacion = ajax("<?php echo site_url('registro/generar_codigo_afiliacion'); ?>", {'datos': {}}, 'html');
+
+        //Si no se generó el código
+        if (codigo_afiliacion == 'false') {
+            //Mensaje de error
+            mostrar_error($("#mensajes"), "No se ha podido guardar su afiliación. Intente nuevamente por favor.");
+
+            // Se detiene el formulario
+            return false;
+        }
+
+        if ($("#es_prestamo").is(":checked")) {
+            es_prestamo = 1;
+        } else {
+            es_prestamo = 0;
+        }
+
+        //Datos a guardar
+        datos = {
+            'Cedula': cedula.val(),
+            'Codigo_Afiliacion': codigo_afiliacion,
+            'Codigo_Empleo': 'Pendiente',
+            'Direccion': direccion.val(),
+            'Email': email.val(),
+            'Fecha_Registro': "<?php echo date('Y-m-d') ?>",
+            'Nombre': nombre.val(),
+            'Fk_Id_Municipio': id_municipio.val(),
+            'Password': password1.val(),
+            'Telefono': telefono.val(),
+            'Fecha_Prestamo': $("#fecha_prestamo").val(),
+            'Es_Prestamo': es_prestamo,
+        }; // datos
+
+        // Dependiendo del tipo
+        switch($("#id_tipo_usuario").val()) {
+            case "1":
+                //Campos obligatorios a validar
+                var campos_pago_vacios = new Array(
+                    consignacion1.val(), 
+                    empresa1.val()
+                );
+
+                datos["Tipo_Afiliacion"] = 1;
+                datos["Consignacion"] = consignacion1.val();
+                datos["Empresa"] = empresa1.val();
+            break;
+                
+            case "2":
+                //Campos obligatorios a validar
+                var campos_pago_vacios = new Array(
+                    empresa2.val(),
+                    codigo_empresa2.val()
+                );
+
+                datos["Tipo_Afiliacion"] = 2;
+                datos["Nombre_Empresa"] = empresa2.val();
+                datos["Empresa"] = codigo_empresa2.val();
+            break;
+
+            case "3":
+                //Campos obligatorios a validar
+                var campos_pago_vacios = new Array(
+                    ce_invitador3.val(), 
+                    consignacion3.val(),
+                    empresa3.val()
+                );
+
+                // Se consulta si existe el invitador
+                invitador = ajax("<?php echo site_url('usuario/consultar_invitador'); ?>", {'codigo_empleo': ce_invitador3.val()}, 'json');
+                
+                // Si trae algo
+                if(invitador.length == 0){
+                    //Se muestra el error
+                    mostrar_error($("#mensajes"), "El usuario con el código de empleo <b>" + ce_invitador3.val() + "</b> no exise.");
+
+                    return false;
+                }else{
+                    datos["Fk_Id_Usuario_Invitador"] = invitador.Pk_Id_Usuario;
+                }
+
+                datos["Tipo_Afiliacion"] = 3;
+                datos["CE_Invitador"] = ce_invitador3.val();
+                datos["Consignacion"] = consignacion3.val();
+                datos["Empresa"] = empresa3.val();
+            break;
+
+            case "4":
+                //Campos obligatorios a validar
+                var campos_pago_vacios = new Array(
+                    cheque4.val(), 
+                    nombre_invitador4.val(),
+                    cedula_invitador4.val(),
+                    telefono_invitador4.val()
+                );
+
+                // Si el número de cheque no contiene la cadena ASV
+                if(cheque4.val().indexOf("ASV")){
+                    //Se muestra el error
+                    mostrar_error($("#mensajes"), "El número de cheque no cumple con las condiciones para el registro de Asesor Voluntario");
+
+                    return false;
+                }
+
+                datos["Tipo_Afiliacion"] = 4;
+                datos["Cheque"] = cheque4.val();
+                datos["Nombre_Invitador"] = nombre_invitador4.val();
+                datos["Cedula_Invitador"] = cedula_invitador4.val();
+                datos["Telefono_Invitador"] = telefono_invitador4.val();
+            break;
+
+            case "5":
+                //Campos obligatorios a validar
+                var campos_pago_vacios = new Array(
+                    patrocinio5.val(),
+                    biblioteca5.val(),
+                    consignacion5.val(),
+                    empresa5.val(),
+                    asesor5.val(),
+                    cedula5.val(),
+                    celular5.val()
+                );
+
+                // // Se consulta si existe el invitador
+                // invitador = ajax("<?php // echo site_url('usuario/consultar_invitador'); ?>", {'codigo_empleo': ce_invitador5.val()}, 'json');
+                
+                // // Si trae algo
+                // if(invitador.length == 0){
+                //     //Se muestra el error
+                //     mostrar_error($("#mensajes"), "El usuario con el código de empleo <b>" + ce_invitador5.val() + "</b> no exise.");
+
+                //     return false;
+                // }else{
+                //     datos["Fk_Id_Usuario_Invitador"] = invitador.Pk_Id_Usuario;
+                // }
+
+                datos["Tipo_Afiliacion"] = 5;
+                datos["Numero_Patrocinio"] = patrocinio5.val();
+                datos["Numero_Biblioteca"] = biblioteca5.val();
+                datos["Consignacion"] = consignacion5.val();
+                datos["Empresa"] = empresa5.val();
+                datos["Nombre_Asesor"] = asesor5.val();
+                datos["Cedula_Asesor"] = cedula5.val();
+                datos["Celular_Asesor"] = celular5.val();
+            break;
+
+            case "6":
+                //Campos obligatorios a validar
+                var campos_pago_vacios = new Array(
+                    cheque6.val(), 
+                    nombre6.val(),
+                    cedula_invitador6.val(),
+                    telefono_invitador6.val()
+                );
+                console.log(campos_pago_vacios);
+
+                // Si el número de cheque no contiene la cadena ASV
+                if(cheque6.val().indexOf("pst")){
+                    //Se muestra el error
+                    mostrar_error($("#mensajes"), "El número de cheque no cumple con las condiciones para el registro de Préstamos");
+
+                    return false;
+                }
+
+                datos["Tipo_Afiliacion"] = 6;
+                datos["Cheque"] = cheque6.val();
+                datos["Cedula_Invitador"] = cedula_invitador6.val();
+                datos["Telefono_Invitador"] = telefono_invitador6.val();
+                datos["Nombre_Invitador"] = nombre6.val();
+            break;
+        }
+            
+        // si no supera la validación
+        if (!validar_campos_vacios(campos_pago_vacios)) {
+            //Se muestra el error
+            mostrar_error($("#mensajes"), "Falta diligenciar los datos del pago. Por favor ingrese todos los datos *");
+
+            return false;
+        }
+
+        //Teniendo todo listo, procedemos a guardar el usuario
+        usuario = ajax("<?php echo site_url('registro/guardar'); ?>", {'datos': datos}, 'html');
+        // console.log(usuario)
+
+        //Si se guarda correctamente
+        if(usuario != 'false'){
+            if (invitador) {
+                // Se actualiza el id de usuario invitador
+                actualizar = ajax("<?php echo site_url('usuario/actualizar'); ?>", {'tipo': 'invitador', 'id_usuario': usuario.Pk_Id_Usuario}, 'html');
+            };
+
+            //Declaramos un arreglo con los datos a enviar por correo
+            datos_email = {
+                'nombre': nombre.val(),
+                'codigo_afiliacion': codigo_afiliacion,
+                'password': password1.val(),
+                'destinatario': email.val()
+            }//Fin datos email
+            //console.log(datos_email)
+
+            //Se envía el correo electrónico de bienvenida
+            email = ajax("<?php echo site_url('email/enviar'); ?>", {'datos': datos_email, 'tipo': 'bienvenido'}, 'html');
+
+            // Se inactiva el botón
+            $("#guardar_registro").attr('disabled', true);
+
+            //Se muestra el mensaje de exito
+            mostrar_exito($("#mensajes"), "¡Se ha afiliado correctamente! Le hemos enviado a su correo electrónico el código de afiliación y la contraseña con la que ingresará a partir de ahora. <h1>Su código de afiliación es " + codigo_afiliacion + "</h1>");
+        }// if usuario guardado
+    }
 
     $(document).ready(function(){
         // // Inicialización de la tabla
@@ -497,304 +802,5 @@
             $("#id_tipo_usuario").val($(this).attr("data-numero"));
             $("#tipo_usuario").val($(this).attr("data-tipo"));
         }); // clic
-    
-        //Al presionar botón registro con cheque
-        $("#guardar_registro").on("click", function(){
-            //Declaración de variables
-            var nombre = $("#input_nombre");    
-            var cedula = $("#input_cedula");
-            var email = $("#input_email");
-            var password1 = $("#input_password1");
-            var password2 = $("#input_password2");
-            var telefono = $("#input_telefono");
-            var direccion = $("#input_direccion");
-            var id_municipio = $("#municipio");
-            var consignacion1 = $("#consignacion1");
-            var empresa1 = $("#empresa1");
-            var empresa2 = $("#empresa2");
-            var codigo_empresa2 = $("#codigo_empresa2");
-            var ce_invitador3 = $("#ce_invitador3");
-            var consignacion3 = $("#consignacion3");
-            var empresa3 = $("#empresa3");
-            var cheque4 = $("#cheque4");
-            var nombre_invitador4 = $("#input_nombre4");
-            var cedula_invitador4 = $("#cedula_invitador4");
-            var telefono_invitador4 = $("#telefono_invitador4");
-            var ce_invitador5 = $("#ce_invitador5");
-
-            var patrocinio5 = $("#patrocinio5");
-            var cupo5 = $("#cupo5");
-            var biblioteca5 = $("#biblioteca5");
-            var afiliado5 = $("#afiliado5");
-            var consignacion5 = $("#consignacion5");
-            var empresa5 = $("#empresa5");
-            var asesor5 = $("#asesor5");
-            var cedula5 = $("#cedula5");
-            var telefono5 = $("#telefono5");
-            var celular5 = $("#celular5");
-
-            var cheque6 = $("#cheque6");
-            var nombre6 = $("#input_nombre6");    
-            var ce_invitador6 = $("#ce_invitador6");
-            var telefono_invitador6 = $("#telefono_invitador6");
-            var cedula_invitador6 = $("#cedula_invitador6");
-            // var tipo_regalo5 = $("#tipo_regalo5");
-            var fecha_consignacion = $("#fecha_consignacion");
-            var id_invitador;
-            var invitador;
-
-            // Datos del cheque
-            var tipo_cheque = $('input:radio[name=metodo_afiliacion]:checked');
-            var codigo_cheque = $("#input_codigo_cheque");
-            var clave_cheque = $("#input_clave_cheque");
-
-            //Campos obligatorios a validar
-            var campos_vacios = new Array(
-                nombre.val(), 
-                cedula.val(), 
-                email.val(),
-                password1.val(),
-                password2.val(),
-                telefono.val(),
-                id_municipio.val()
-            );
-            // console.log(campos_vacios);
-            
-            // si no supera la validación
-            if (!validar_campos_vacios(campos_vacios)) {
-                //Se muestra el error
-                mostrar_error($("#mensajes"), "Por favor diligencie todos los campos marcados con *");
-
-                return false;
-            }
-            
-            // Si no coincide los cheques
-            if (!validar_claves(password1, password2)) {
-                //Se muestra el error
-                mostrar_error($("#mensajes"), "Las contraseñas no coinciden. Por favor verifique.");
-
-                return false;
-            }
-
-            validar_cedula = ajax("<?php echo site_url('registro/validar_cedula'); ?>", {'cedula': cedula.val()}, 'html');
-
-            // Si ya existe la cédula
-            if (validar_cedula) {
-                //Se muestra el error
-                alert("El número de cédula ya se encuentra registrado. Verifique y vuelva a intentarlo");
-
-                return false;
-            }
-
-            //Obtenemos un código de afiliación
-            codigo_afiliacion = ajax("<?php echo site_url('registro/generar_codigo_afiliacion'); ?>", {'datos': {}}, 'html');
-
-            //Si no se generó el código
-            if (codigo_afiliacion == 'false') {
-                //Mensaje de error
-                mostrar_error($("#mensajes"), "No se ha podido guardar su afiliación. Intente nuevamente por favor.");
-
-                // Se detiene el formulario
-                return false;
-            }
-
-            if ($("#es_prestamo").is(":checked")) {
-                es_prestamo = 1;
-            } else {
-                es_prestamo = 0;
-            }
-
-            //Datos a guardar
-            datos = {
-                'Cedula': cedula.val(),
-                'Codigo_Afiliacion': codigo_afiliacion,
-                'Codigo_Empleo': 'Pendiente',
-                'Direccion': direccion.val(),
-                'Email': email.val(),
-                'Fecha_Registro': "<?php echo date('Y-m-d') ?>",
-                'Nombre': nombre.val(),
-                'Fk_Id_Municipio': id_municipio.val(),
-                'Password': password1.val(),
-                'Telefono': telefono.val(),
-                'Fecha_Prestamo': $("#fecha_prestamo").val(),
-                'Es_Prestamo': es_prestamo,
-            }; // datos
-
-            // Dependiendo del tipo
-            switch($("#id_tipo_usuario").val()) {
-                case "1":
-                    //Campos obligatorios a validar
-                    var campos_pago_vacios = new Array(
-                        consignacion1.val(), 
-                        empresa1.val()
-                    );
-
-                    datos["Tipo_Afiliacion"] = 1;
-                    datos["Consignacion"] = consignacion1.val();
-                    datos["Empresa"] = empresa1.val();
-                break;
-                    
-                case "2":
-                    //Campos obligatorios a validar
-                    var campos_pago_vacios = new Array(
-                        empresa2.val(),
-                        codigo_empresa2.val()
-                    );
-
-                    datos["Tipo_Afiliacion"] = 2;
-                    datos["Nombre_Empresa"] = empresa2.val();
-                    datos["Empresa"] = codigo_empresa2.val();
-                break;
-
-                case "3":
-                    //Campos obligatorios a validar
-                    var campos_pago_vacios = new Array(
-                        ce_invitador3.val(), 
-                        consignacion3.val(),
-                        empresa3.val()
-                    );
-
-                    // Se consulta si existe el invitador
-                    invitador = ajax("<?php echo site_url('usuario/consultar_invitador'); ?>", {'codigo_empleo': ce_invitador3.val()}, 'json');
-                    
-                    // Si trae algo
-                    if(invitador.length == 0){
-                        //Se muestra el error
-                        mostrar_error($("#mensajes"), "El usuario con el código de empleo <b>" + ce_invitador3.val() + "</b> no exise.");
-
-                        return false;
-                    }else{
-                        datos["Fk_Id_Usuario_Invitador"] = invitador.Pk_Id_Usuario;
-                    }
-
-                    datos["Tipo_Afiliacion"] = 3;
-                    datos["CE_Invitador"] = ce_invitador3.val();
-                    datos["Consignacion"] = consignacion3.val();
-                    datos["Empresa"] = empresa3.val();
-                break;
-
-                case "4":
-                    //Campos obligatorios a validar
-                    var campos_pago_vacios = new Array(
-                        cheque4.val(), 
-                        nombre_invitador4.val(),
-                        cedula_invitador4.val(),
-                        telefono_invitador4.val()
-                    );
-
-                    // Si el número de cheque no contiene la cadena ASV
-                    if(cheque4.val().indexOf("ASV")){
-                        //Se muestra el error
-                        mostrar_error($("#mensajes"), "El número de cheque no cumple con las condiciones para el registro de Asesor Voluntario");
-
-                        return false;
-                    }
-
-                    datos["Tipo_Afiliacion"] = 4;
-                    datos["Cheque"] = cheque4.val();
-                    datos["Nombre_Invitador"] = nombre_invitador4.val();
-                    datos["Cedula_Invitador"] = cedula_invitador4.val();
-                    datos["Telefono_Invitador"] = telefono_invitador4.val();
-                break;
-
-                case "5":
-                    //Campos obligatorios a validar
-                    var campos_pago_vacios = new Array(
-                        patrocinio5.val(),
-                        biblioteca5.val(),
-                        consignacion5.val(),
-                        empresa5.val(),
-                        asesor5.val(),
-                        cedula5.val(),
-                        celular5.val()
-                    );
-
-                    // // Se consulta si existe el invitador
-                    // invitador = ajax("<?php // echo site_url('usuario/consultar_invitador'); ?>", {'codigo_empleo': ce_invitador5.val()}, 'json');
-                    
-                    // // Si trae algo
-                    // if(invitador.length == 0){
-                    //     //Se muestra el error
-                    //     mostrar_error($("#mensajes"), "El usuario con el código de empleo <b>" + ce_invitador5.val() + "</b> no exise.");
-
-                    //     return false;
-                    // }else{
-                    //     datos["Fk_Id_Usuario_Invitador"] = invitador.Pk_Id_Usuario;
-                    // }
-
-                    datos["Tipo_Afiliacion"] = 5;
-                    datos["Numero_Patrocinio"] = patrocinio5.val();
-                    datos["Numero_Biblioteca"] = biblioteca5.val();
-                    datos["Consignacion"] = consignacion5.val();
-                    datos["Empresa"] = empresa5.val();
-                    datos["Nombre_Asesor"] = asesor5.val();
-                    datos["Cedula_Asesor"] = cedula5.val();
-                    datos["Celular_Asesor"] = celular5.val();
-                break;
-
-                case "6":
-                    //Campos obligatorios a validar
-                    var campos_pago_vacios = new Array(
-                        cheque6.val(), 
-                        nombre6.val(),
-                        cedula_invitador6.val(),
-                        telefono_invitador6.val()
-                    );
-                    console.log(campos_pago_vacios);
-
-                    // Si el número de cheque no contiene la cadena ASV
-                    if(cheque6.val().indexOf("pst")){
-                        //Se muestra el error
-                        mostrar_error($("#mensajes"), "El número de cheque no cumple con las condiciones para el registro de Préstamos");
-
-                        return false;
-                    }
-
-                    datos["Tipo_Afiliacion"] = 6;
-                    datos["Cheque"] = cheque6.val();
-                    datos["Cedula_Invitador"] = cedula_invitador6.val();
-                    datos["Telefono_Invitador"] = telefono_invitador6.val();
-                    datos["Nombre_Invitador"] = nombre6.val();
-                break;
-            }
-                
-            // si no supera la validación
-            if (!validar_campos_vacios(campos_pago_vacios)) {
-                //Se muestra el error
-                mostrar_error($("#mensajes"), "Falta diligenciar los datos del pago. Por favor ingrese todos los datos *");
-
-                return false;
-            }
-
-            //Teniendo todo listo, procedemos a guardar el usuario
-            usuario = ajax("<?php echo site_url('registro/guardar'); ?>", {'datos': datos}, 'html');
-            // console.log(usuario)
-
-            //Si se guarda correctamente
-            if(usuario != 'false'){
-                if (invitador) {
-                    // Se actualiza el id de usuario invitador
-                    actualizar = ajax("<?php echo site_url('usuario/actualizar'); ?>", {'tipo': 'invitador', 'id_usuario': usuario.Pk_Id_Usuario}, 'html');
-                };
-
-                //Declaramos un arreglo con los datos a enviar por correo
-                datos_email = {
-                    'nombre': nombre.val(),
-                    'codigo_afiliacion': codigo_afiliacion,
-                    'password': password1.val(),
-                    'destinatario': email.val()
-                }//Fin datos email
-                //console.log(datos_email)
-
-                //Se envía el correo electrónico de bienvenida
-                email = ajax("<?php echo site_url('email/enviar'); ?>", {'datos': datos_email, 'tipo': 'bienvenido'}, 'html');
-
-                // Se inactiva el botón
-                $("#guardar_registro").attr('disabled', true);
-
-                //Se muestra el mensaje de exito
-                mostrar_exito($("#mensajes"), "¡Se ha afiliado correctamente! Le hemos enviado a su correo electrónico el código de afiliación y la contraseña con la que ingresará a partir de ahora. <h1>Su código de afiliación es " + codigo_afiliacion + "</h1>");
-            }// if usuario guardado
-        });//Fin guardar
     });//Fin document.ready
 </script>
