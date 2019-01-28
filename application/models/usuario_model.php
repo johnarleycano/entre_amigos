@@ -133,6 +133,20 @@ Class Usuario_model extends CI_Model{
 		return $this->db->query($sql)->result();
 	}
 
+	function cargar_referidos_patrocinados($cedula){
+		$sql =
+		"SELECT
+			* 
+		FROM
+			tbl_usuarios AS u 
+		WHERE
+			u.Cedula_Asesor = '$cedula' 
+			AND u.Tipo_Afiliacion = 5";
+
+		
+		return $this->db->query($sql)->result();
+	}
+
 	function validar($datos){
 		//Campos a retornar
 		$this->db->select('*');

@@ -65,6 +65,17 @@ Class Usuario extends CI_Controller{
         $this->load->view('plantillas/template', $this->data);
 	}
 
+	function asesores_voluntarios(){
+		//Se establece el título de la página
+		$this->data['titulo'] = 'Asesores voluntarios';
+		//Se establece la vista que tiene el contenido principal
+        $this->data['contenido_principal'] = 'usuario/asesores_voluntarios/index';
+        //Se establece la vista que tiene la cabecera
+        $this->data['cabecera'] = 'usuario/asesores_voluntarios/index_cabecera';
+        //Se carga la plantilla con las demas variables
+        $this->load->view('plantillas/template', $this->data);
+	}
+
 	function actualizar(){
 		//Se valida que la peticion venga mediante ajax y no mediante el navegador
         if($this->input->is_ajax_request()){
@@ -131,6 +142,11 @@ Class Usuario extends CI_Controller{
             redirect('');
         }
 	}// cargar_interfaz
+
+	function cargar_referidos_asesor_voluntario(){
+		$this->data["cedula"] = $this->input->post("cedula");
+		$this->load->view('usuario/asesores_voluntarios/tabla_view', $this->data);
+	}
 
 	function consultar_datos(){
 		//Se valida que la peticion venga mediante ajax y no mediante el navegador

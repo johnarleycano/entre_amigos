@@ -60,10 +60,9 @@
 
 		<!-- Si no se ha logueado -->
 		<?php if(!$id_usuario){ ?>
-			<!-- Afiliarme -->
 			<li><a href="<?php echo site_url('registro'); ?>"><span class="glyphicon glyphicon-hand-up"></span> Afiliarme</a></li>
+			<li><a href="<?php echo site_url('usuario/asesores_voluntarios'); ?>"><span class="glyphicon glyphicon-hand-up"></span> Asesores voluntarios</a></li>
 		<?php } ?>
-		
 		
 		<?php if(false){ ?>
 			<!-- Comprar libro -->
