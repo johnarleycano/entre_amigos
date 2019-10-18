@@ -67,7 +67,7 @@
 	</form>
 </div>
 
-<div class="col-lg-3">
+<!-- <div class="col-lg-3">
 	<form method="post" action="https://gateway.payulatam.com/ppp-web-gateway/pb.zul" accept-charset="UTF-8">
 	  <input type="image" border="0" alt="" src="http://www.entreamigosdecolombia.org/img/botones/afiliacion4.PNG" onClick="this.form.urlOrigen.value = window.location.href;"/>
 	  <input name="buttonId" type="hidden" value="PbdA9H1H2Nh8ihm8iIerltLHSdLvSbV5rKDVAaVP48WHKp4OGN13gg=="/>
@@ -88,4 +88,4 @@
 	  <input name="buttonType" value="SIMPLE" type="hidden"/>
 	  <input name="signature" value="163b5ecade0f9357b0ce962138a6306367551c8fea85ed2284b7935a61bda908" type="hidden"/>
 	</form>
-</div>
+</div> -->

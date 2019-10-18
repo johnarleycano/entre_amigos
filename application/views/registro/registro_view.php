@@ -176,8 +176,10 @@
             <p>
                 <div class="well row">
                     <div class="col-lg-4">
-                        <label for="ce_invitador3" class="control-label">Código de empleo del invitador *</label>
-                        <input type="text" class="form-control" id="ce_invitador3" placeholder="Escriba el número de consignación">
+                        <!-- <label for="ce_invitador3" class="control-label">Código de empleo del invitador *</label> -->
+                        <!-- <input type="text" class="form-control" id="ce_invitador3" placeholder="Escriba el número de consignación"> -->
+                        <label for="ca_invitador3" class="control-label">Código de empleo del invitador *</label>
+                        <input type="text" class="form-control" id="ca_invitador3" placeholder="Escriba el código de empleo">
                     </div>
 
                     <div class="col-lg-4">
@@ -460,7 +462,8 @@
         var empresa1 = $("#empresa1");
         var empresa2 = $("#empresa2");
         var codigo_empresa2 = $("#codigo_empresa2");
-        var ce_invitador3 = $("#ce_invitador3");
+        // var ce_invitador3 = $("#ce_invitador3");
+        var ca_invitador3 = $("#ca_invitador3");
         var consignacion3 = $("#consignacion3");
         var empresa3 = $("#empresa3");
         var cheque4 = $("#cheque4");
@@ -596,18 +599,19 @@
             case "3":
                 //Campos obligatorios a validar
                 var campos_pago_vacios = new Array(
-                    ce_invitador3.val(), 
+                    // ce_invitador3.val(), 
+                    ca_invitador3.val(), 
                     consignacion3.val(),
                     empresa3.val()
                 );
 
                 // Se consulta si existe el invitador
-                invitador = ajax("<?php echo site_url('usuario/consultar_invitador'); ?>", {'codigo_empleo': ce_invitador3.val()}, 'json');
+                invitador = ajax("<?php echo site_url('usuario/consultar_invitador'); ?>", {'codigo_afiliacion': ca_invitador3.val()}, 'json');
                 
                 // Si trae algo
                 if(invitador.length == 0){
                     //Se muestra el error
-                    mostrar_error($("#mensajes"), "El usuario con el código de empleo <b>" + ce_invitador3.val() + "</b> no exise.");
+                    mostrar_error($("#mensajes"), "El usuario con el código de afiliación <b>" + ca_invitador3.val() + "</b> no exise.");
 
                     return false;
                 }else{
@@ -615,7 +619,8 @@
                 }
 
                 datos["Tipo_Afiliacion"] = 3;
-                datos["CE_Invitador"] = ce_invitador3.val();
+                // datos["CE_Invitador"] = ce_invitador3.val();
+                datos["CA_Invitador"] = ca_invitador3.val();
                 datos["Consignacion"] = consignacion3.val();
                 datos["Empresa"] = empresa3.val();
             break;

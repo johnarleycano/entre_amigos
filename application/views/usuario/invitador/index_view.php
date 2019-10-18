@@ -14,6 +14,10 @@
 	</div>   
 <?php } ?>
 
+<center>
+    <img src="<?php echo base_url(); ?>img/publicidad.png" align="center">
+</center>
+
 <script type="text/javascript">
     $(document).ready(function(){
 
