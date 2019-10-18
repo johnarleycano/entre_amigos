@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://entreamigosdecolombia.org/';
+$config['base_url']	= 'http://entreamigosdecolombia.org';
 
 /*
 |--------------------------------------------------------------------------
