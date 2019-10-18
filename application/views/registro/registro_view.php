@@ -178,8 +178,8 @@
                     <div class="col-lg-4">
                         <!-- <label for="ce_invitador3" class="control-label">Código de empleo del invitador *</label> -->
                         <!-- <input type="text" class="form-control" id="ce_invitador3" placeholder="Escriba el número de consignación"> -->
-                        <label for="ca_invitador3" class="control-label">Código de empleo del invitador *</label>
-                        <input type="text" class="form-control" id="ca_invitador3" placeholder="Escriba el código de empleo">
+                        <label for="ca_invitador3" class="control-label">Código de afiliación del invitador *</label>
+                        <input type="text" class="form-control" id="ca_invitador3" placeholder="Escriba el código de afiliación">
                     </div>
 
                     <div class="col-lg-4">
